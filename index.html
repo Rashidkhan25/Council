@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VCET Students' Council</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0f2e3f;
+      --secondary: #1f6f8b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* BACKGROUND VIDEO */
+    .bg-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    /* OVERLAY */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.45);
+      z-index: -1;
+    }
+
+    /* CONTAINER */
+    .container {
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+      z-index: 1;
+      margin-top: 24px;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      width: 88px;
+      height: 88px;
+      margin: auto;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .header h1 {
+      margin-top: 14px;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #000;
+    }
+
+    .header p {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 1.5px;
+      font-size: 1.05rem;
+      color: #000;
+      margin-top: 4px;
+    }
+
+    /* MAIN CARDS */
+    .card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      border-radius: 16px;
+      text-decoration: none;
+
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.35);
+
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.45),
+        0 12px 30px rgba(0,0,0,0.18);
+
+      transition: all 0.3s ease;
+    }
+
+    .card:active {
+      transform: scale(0.97);
+    }
+
+    .card span {
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .arrow {
+      font-size: 1.3rem;
+      color: var(--secondary);
+    }
+
+    /* DIVIDER */
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 22px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(0,0,0,0.25);
+    }
+
+    .divider span {
+      margin: 0 10px;
+      color: rgba(0,0,0,0.6);
+      font-size: 0.85rem;
+    }
+
+    /* FOLLOW US CARD */
+    .footer-card.socials {
+      padding: 20px 18px 22px;
+      border-radius: 16px;
+      text-align: center;
+
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.35);
+
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.45),
+        0 12px 30px rgba(0,0,0,0.2);
+    }
+
+    .footer-card.socials h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .footer-card.socials h3::after {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 2px;
+      margin: 8px auto 0;
+      background: rgba(15,46,63,0.35);
+      border-radius: 10px;
+    }
+
+    /* SOCIAL ICONS */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+    }
+
+    .social-icons i {
+      font-size: 1.1rem;
+      color: var(--primary);
+      padding: 12px 14px;
+      border-radius: 999px;
+
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.35);
+
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.45),
+        0 6px 18px rgba(0,0,0,0.18);
+
+      transition: all 0.25s ease;
+    }
+
+    .social-icons i:active {
+      transform: scale(0.9);
+    }
+
+    .fa-instagram:hover { color: #e1306c; }
+    .fa-youtube:hover { color: #ff0000; }
+    .fa-linkedin-in:hover { color: #0a66c2; }
+
+    /* ========================= */
+    /* 📲 TABLET (≥768px) */
+    /* ========================= */
+    @media (min-width: 768px) {
+      body {
+        padding: 32px;
+      }
+
+      .container {
+        max-width: 520px;
+      }
+
+      .header h1 {
+        font-size: 1.45rem;
+      }
+
+      .header p {
+        font-size: 1.15rem;
+      }
+
+      .card span {
+        font-size: 1rem;
+      }
+
+      .social-icons i {
+        font-size: 1.2rem;
+        padding: 14px 16px;
+      }
+    }
+
+    /* ========================= */
+    /* 💻 LAPTOP (≥1024px) */
+    /* ========================= */
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 600px;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+      }
+
+      .social-icons i:hover {
+        transform: translateY(-2px);
+        background: rgba(255,255,255,0.35);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="background.mp4" type="video/mp4">
+  </video>
+
+  <div class="container">
+
+    <div class="header">
+      <div class="logo">
+        <img src="logo.jpeg" alt="Logo">
+      </div>
+      <h1>VCET STUDENTS' COUNCIL</h1>
+      <p>Register for Zeal 2026</p>
+    </div>
+
+    <a href="https://forms.gle/kSJyMfwvmeZg2GRq8" class="card">
+      <span>Internal Registration</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a href="https://forms.gle/56XRLGBcB4bDhHFD6" class="card">
+      <span>External Registration</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a href="#" class="card">
+      <span>Buy Passes</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <div class="divider"><span>More</span></div>
+
+    <div class="footer-card socials">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/vcetstudentscouncil/" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="#" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
