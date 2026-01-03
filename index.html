@@ -14,56 +14,66 @@
 
   <style>
     :root {
-      --primary: #0f2e3f;
-      --secondary: #1f6f8b;
+      --primary: #ffffff;
+      --secondary: #cfe9f6;
     }
 
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden; /* 🔒 HARD STOP horizontal scroll */
     }
 
     body {
       min-height: 100vh;
+      font-family: "Poppins", sans-serif;
       display: flex;
       justify-content: center;
       padding: 16px;
       position: relative;
-      overflow-x: none;
+      background: #000;
     }
 
+    /* ========================= */
+    /* BACKGROUND VIDEO (SAFE)   */
+    /* ========================= */
     .bg-video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      transform: translate(-50%, -50%);
+      position: fixed; /* 🔥 FIX: fixed instead of absolute */
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       z-index: -2;
     }
 
-    /* OVERLAY */
+    /* BLACK TINT */
     body::before {
       content: "";
-      position: absolute;
+      position: fixed;
       inset: 0;
-      background: rgba(255,255,255,0.45);
+      background: rgba(0,0,0,0.55);
       z-index: -1;
     }
 
+    /* ========================= */
     /* CONTAINER */
+    /* ========================= */
     .container {
       width: 100%;
       max-width: 420px;
-      position: relative;
+      margin: 24px auto;
       z-index: 1;
-      margin-top: 24px;
     }
 
+    /* ========================= */
     /* HEADER */
+    /* ========================= */
     .header {
       text-align: center;
       margin-bottom: 24px;
@@ -75,8 +85,8 @@
       margin: auto;
       border-radius: 50%;
       background: #fff;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
     .logo img {
@@ -89,36 +99,39 @@
       margin-top: 14px;
       font-size: 1.25rem;
       font-weight: 900;
-      color: #000;
+      color: #fff;
     }
 
     .header p {
       font-family: "Bebas Neue", sans-serif;
       letter-spacing: 1.5px;
       font-size: 1.05rem;
-      color: #000;
+      color: #eaeaea;
       margin-top: 4px;
     }
 
+    /* ========================= */
     /* MAIN CARDS */
+    /* ========================= */
     .card {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       padding: 16px 18px;
       margin-bottom: 14px;
       border-radius: 16px;
       text-decoration: none;
 
-      background: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.15);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255,255,255,0.35);
 
       box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.45),
-        0 12px 30px rgba(0,0,0,0.18);
+        inset 0 1px 1px rgba(255,255,255,0.35),
+        0 12px 30px rgba(0,0,0,0.35);
 
-      transition: all 0.3s ease;
+      transition: transform 0.25s ease;
     }
 
     .card:active {
@@ -126,9 +139,9 @@
     }
 
     .card span {
-      color: var(--primary);
-      font-weight: 500;
+      color: #fff;
       font-size: 0.95rem;
+      font-weight: 500;
     }
 
     .arrow {
@@ -136,7 +149,9 @@
       color: var(--secondary);
     }
 
+    /* ========================= */
     /* DIVIDER */
+    /* ========================= */
     .divider {
       display: flex;
       align-items: center;
@@ -148,34 +163,36 @@
       content: "";
       flex: 1;
       height: 1px;
-      background: rgba(0,0,0,0.25);
+      background: rgba(255,255,255,0.25);
     }
 
     .divider span {
       margin: 0 10px;
-      color: rgba(0,0,0,0.6);
       font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
     }
 
-    /* FOLLOW US CARD */
+    /* ========================= */
+    /* FOLLOW US */
+    /* ========================= */
     .footer-card.socials {
       padding: 20px 18px 22px;
       border-radius: 16px;
       text-align: center;
 
-      background: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.15);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255,255,255,0.35);
 
       box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.45),
-        0 12px 30px rgba(0,0,0,0.2);
+        inset 0 1px 1px rgba(255,255,255,0.35),
+        0 12px 30px rgba(0,0,0,0.4);
     }
 
     .footer-card.socials h3 {
       font-size: 1rem;
       font-weight: 600;
-      color: var(--primary);
+      color: #fff;
     }
 
     .footer-card.socials h3::after {
@@ -184,11 +201,10 @@
       width: 36px;
       height: 2px;
       margin: 8px auto 0;
-      background: rgba(15,46,63,0.35);
+      background: rgba(255,255,255,0.4);
       border-radius: 10px;
     }
 
-    /* SOCIAL ICONS */
     .social-icons {
       display: flex;
       justify-content: center;
@@ -202,23 +218,17 @@
 
     .social-icons i {
       font-size: 1.1rem;
-      color: var(--primary);
+      color: #fff;
       padding: 12px 14px;
       border-radius: 999px;
 
-      background: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.18);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.35);
 
       box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.45),
-        0 6px 18px rgba(0,0,0,0.18);
-
-      transition: all 0.25s ease;
-    }
-
-    .social-icons i:active {
-      transform: scale(0.9);
+        inset 0 1px 1px rgba(255,255,255,0.35),
+        0 6px 18px rgba(0,0,0,0.35);
     }
 
     .fa-instagram:hover { color: #e1306c; }
@@ -226,57 +236,27 @@
     .fa-linkedin-in:hover { color: #0a66c2; }
 
     /* ========================= */
-    /* 📲 TABLET (≥768px) */
+    /* TABLET */
     /* ========================= */
     @media (min-width: 768px) {
-      body {
-        padding: 32px;
-      }
-
-      .container {
-        max-width: 520px;
-      }
-
-      .header h1 {
-        font-size: 1.45rem;
-      }
-
-      .header p {
-        font-size: 1.15rem;
-      }
-
-      .card span {
-        font-size: 1rem;
-      }
-
-      .social-icons i {
-        font-size: 1.2rem;
-        padding: 14px 16px;
-      }
+      body { padding: 32px; }
+      .container { max-width: 520px; }
+      .header h1 { font-size: 1.45rem; }
     }
 
     /* ========================= */
-    /* 💻 LAPTOP (≥1024px) */
+    /* DESKTOP */
     /* ========================= */
     @media (min-width: 1024px) {
-      .container {
-        max-width: 600px;
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-      }
-
-      .social-icons i:hover {
-        transform: translateY(-2px);
-        background: rgba(255,255,255,0.35);
-      }
+      .container { max-width: 600px; }
+      .card:hover { transform: translateY(-4px); }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- Background Video -->
   <video class="bg-video" autoplay muted loop playsinline>
     <source src="background.mp4" type="video/mp4">
   </video>
