@@ -1,309 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VCET Students' Council</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VCET Students' Council</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-  <style>
-    :root {
-      --primary: #ffffff;
-      --secondary: #cfe9f6;
-    }
+    <style>
+      :root {
+        --primary: #ffffff;
+        --secondary: #cfe9f6;
+      }
 
-    /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    html, body {
-      width: 100%;
-      overflow-x: hidden; /* 🔒 HARD STOP horizontal scroll */
-    }
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+      }
 
-    body {
-      min-height: 100vh;
-      font-family: "Poppins", sans-serif;
-      display: flex;
-      justify-content: center;
-      padding: 16px;
-      position: relative;
-      background: #000;
-    }
+      body {
+        min-height: 100vh;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 16px;
+        background: #000;
+      }
 
-    /* ========================= */
-    /* BACKGROUND VIDEO (SAFE)   */
-    /* ========================= */
-    .bg-video {
-      position: fixed; /* 🔥 FIX: fixed instead of absolute */
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-    }
+      /* BACKGROUND VIDEO */
+      .bg-video {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -2;
+      }
 
-    /* BLACK TINT */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      z-index: -1;
-    }
+      /* BLACK TINT */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: -1;
+      }
 
-    /* ========================= */
-    /* CONTAINER */
-    /* ========================= */
-    .container {
-      width: 100%;
-      max-width: 420px;
-      margin: 24px auto;
-      z-index: 1;
-    }
+      .container {
+        width: 100%;
+        max-width: 420px;
+        margin: 24px auto;
+        z-index: 1;
+      }
 
-    /* ========================= */
-    /* HEADER */
-    /* ========================= */
-    .header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
+      /* HEADER */
+      .header {
+        text-align: center;
+        margin-bottom: 24px;
+      }
 
-    .logo {
-      width: 88px;
-      height: 88px;
-      margin: auto;
-      border-radius: 50%;
-      background: #fff;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
+      .logo {
+        width: 88px;
+        height: 88px;
+        margin: auto;
+        border-radius: 50%;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      }
 
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-    .header h1 {
-      margin-top: 14px;
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: #fff;
-    }
+      .header h1 {
+        margin-top: 14px;
+        font-size: 1.25rem;
+        font-weight: 900;
+        color: #fff;
+      }
 
-    .header p {
-      font-family: "Bebas Neue", sans-serif;
-      letter-spacing: 1.5px;
-      font-size: 1.05rem;
-      color: #eaeaea;
-      margin-top: 4px;
-    }
+      .header p {
+        font-family: "Bebas Neue", sans-serif;
+        letter-spacing: 1.5px;
+        font-size: 1.05rem;
+        color: #eaeaea;
+        margin-top: 4px;
+      }
 
-    /* ========================= */
-    /* MAIN CARDS */
-    /* ========================= */
-    .card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      /* NORMAL CARDS */
+      .card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 18px;
+        margin-bottom: 14px;
+        border-radius: 16px;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
 
-      padding: 16px 18px;
-      margin-bottom: 14px;
-      border-radius: 16px;
-      text-decoration: none;
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35),
+          0 12px 30px rgba(0, 0, 0, 0.35);
 
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.35);
+        transition: transform 0.25s ease;
+      }
 
-      box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.35),
-        0 12px 30px rgba(0,0,0,0.35);
+      .card.disabled {
+        pointer-events: none;
+        opacity: 0.7;
+        filter: grayscale(60%);
+        cursor: not-allowed;
+      }
 
-      transition: transform 0.25s ease;
-    }
+      .card span {
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
 
-    .card:active {
-      transform: scale(0.97);
-    }
+      .arrow {
+        font-size: 1.3rem;
+        color: var(--secondary);
+      }
 
-    .card span {
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
+      /*Passes*/
+      .coming{
+        font-size: 0.75rem !important;
+      }
 
-    .arrow {
-      font-size: 1.3rem;
-      color: var(--secondary);
-    }
+      /* DIVIDER */
+      .divider {
+        display: flex;
+        align-items: center;
+        margin: 22px 0;
+      }
 
-    /* ========================= */
-    /* DIVIDER */
-    /* ========================= */
-    .divider {
-      display: flex;
-      align-items: center;
-      margin: 22px 0;
-    }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.25);
+      }
 
-    .divider::before,
-    .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: rgba(255,255,255,0.25);
-    }
+      .divider span {
+        margin: 0 10px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
 
-    .divider span {
-      margin: 0 10px;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
-    }
+      /* ========================= */
+      /* RULEBOOK CARD */
+      /* ========================= */
+      .rulebook-card {
+        padding: 18px;
+        border-radius: 16px;
 
-    /* ========================= */
-    /* FOLLOW US */
-    /* ========================= */
-    .footer-card.socials {
-      padding: 20px 18px 22px;
-      border-radius: 16px;
-      text-align: center;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
 
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.35);
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35),
+          0 12px 30px rgba(0, 0, 0, 0.4);
+      }
 
-      box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.35),
-        0 12px 30px rgba(0,0,0,0.4);
-    }
+      .rulebook-title {
+        text-align: center;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+      }
 
-    .footer-card.socials h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #fff;
-    }
+      .rulebook-title::after {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 2px;
+        margin: 8px auto 12px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+      }
 
-    .footer-card.socials h3::after {
-      content: "";
-      display: block;
-      width: 36px;
-      height: 2px;
-      margin: 8px auto 0;
-      background: rgba(255,255,255,0.4);
-      border-radius: 10px;
-    }
+      .rulebook-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
 
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 14px;
-    }
+      .rulebook {
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
+      }
 
-    .social-icons a {
-      text-decoration: none;
-    }
+      .rulebook img {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        transition: transform 0.25s ease;
+      }
 
-    .social-icons i {
-      font-size: 1.1rem;
-      color: #fff;
-      padding: 12px 14px;
-      border-radius: 999px;
+      .rulebook span {
+        display: block;
+        margin-top: 8px;
+        font-size: 1rem;
+        opacity: 0.9;
+      }
 
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.35);
+      .rulebook:hover img {
+        transform: translateY(-4px) scale(1.03);
+      }
 
-      box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.35),
-        0 6px 18px rgba(0,0,0,0.35);
-    }
+      /* ========================= */
+      /* FOLLOW US */
+      /* ========================= */
+      .footer-card.socials {
+        margin-top: 18px;
+        padding: 20px;
+        border-radius: 16px;
+        text-align: center;
 
-    .fa-instagram:hover { color: #e1306c; }
-    .fa-youtube:hover { color: #ff0000; }
-    .fa-linkedin-in:hover { color: #0a66c2; }
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
 
-    /* ========================= */
-    /* TABLET */
-    /* ========================= */
-    @media (min-width: 768px) {
-      body { padding: 32px; }
-      .container { max-width: 520px; }
-      .header h1 { font-size: 1.45rem; }
-    }
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35),
+          0 12px 30px rgba(0, 0, 0, 0.4);
+      }
 
-    /* ========================= */
-    /* DESKTOP */
-    /* ========================= */
-    @media (min-width: 1024px) {
-      .container { max-width: 600px; }
-      .card:hover { transform: translateY(-4px); }
-    }
-  </style>
-</head>
+      .footer-card.socials h3 {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+      }
 
-<body>
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 14px;
+      }
 
-  <!-- Background Video -->
-  <video class="bg-video" autoplay muted loop playsinline>
-    <source src="background.mp4" type="video/mp4">
-  </video>
+      .social-icons i {
+        font-size: 1.1rem;
+        padding: 12px 14px;
+        border-radius: 999px;
 
-  <div class="container">
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+      }
 
-    <div class="header">
-      <div class="logo">
-        <img src="logo.jpeg" alt="Logo">
+      .social-icons .fa-instagram {
+        color: #e1306c;
+      }
+
+      .social-icons .fa-youtube {
+        color: #ff0000;
+      }
+
+      .social-icons .fa-linkedin-in {
+        color: #0a66c2;
+      }
+
+      /* RESPONSIVE */
+      @media (min-width: 768px) {
+        .container {
+          max-width: 520px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 600px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <video class="bg-video" autoplay muted loop playsinline>
+      <source src="background.mp4" type="video/mp4" />
+    </video>
+
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <img src="logo.jpeg" alt="Logo" />
+        </div>
+        <h1>VCET STUDENTS' COUNCIL</h1>
+        <p>Register for Zeal 2026</p>
       </div>
-      <h1>VCET STUDENTS' COUNCIL</h1>
-      <p>Register for Zeal 2026</p>
-    </div>
 
-    <a href="https://forms.gle/kSJyMfwvmeZg2GRq8" class="card">
-      <span>Internal Registration</span>
-      <span class="arrow">➜</span>
-    </a>
+      <a href="https://forms.gle/kSJyMfwvmeZg2GRq8" class="card">
+        <span>Internal Registration</span>
+        <span class="arrow">➜</span>
+      </a>
 
-    <a href="https://forms.gle/56XRLGBcB4bDhHFD6" class="card">
-      <span>External Registration</span>
-      <span class="arrow">➜</span>
-    </a>
+      <a href="https://forms.gle/56XRLGBcB4bDhHFD6" class="card">
+        <span>External Registration</span>
+        <span class="arrow">➜</span>
+      </a>
 
-    <a href="#" class="card">
-      <span>Buy Passes</span>
-      <span class="arrow">➜</span>
-    </a>
+      <a class="card disabled">
+        <span>Get Your Passes !!</span>
+        <span class="coming">Coming Soon</span>
+      </a>
 
-    <div class="divider"><span>More</span></div>
+      <div class="divider"><span>Rulebooks</span></div>
 
-    <div class="footer-card socials">
-      <h3>Follow Us</h3>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/vcetstudentscouncil/" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#" target="_blank">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="#" target="_blank">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
+      <!-- RULEBOOK CARD -->
+      <div class="rulebook-card">
+        <div class="rulebook-title">Rulebooks</div>
+
+        <div class="rulebook-grid">
+          <a
+            href="https://drive.google.com/file/d/1IJsjTmnfLrxP2n1Mw3JGze_EUtrhVX9E/view?usp=drive_link"
+            class="rulebook"
+            target="_blank"
+          >
+            <img src="internal.png" alt="Internal Rulebook" />
+            <span>Internal Rulebook</span>
+          </a>
+
+          <a
+            href="https://drive.google.com/file/d/1SKwDKVINoE_sFsMZ0LeSFTR70hcyUmNC/view?usp=drive_link"
+            class="rulebook"
+            target="_blank"
+          >
+            <img src="external.png" alt="External Rulebook" />
+            <span>External Rulebook</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-card socials">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/vcetstudentscouncil/"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://www.youtube.com/@vcetstudentscouncil2697"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a href="https://www.linkedin.com/company/vcet-students-council/"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+        </div>
       </div>
     </div>
-
-  </div>
-
-</body>
+  </body>
 </html>
